@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 
 const List = ({ friend }) => {
   return (
@@ -16,7 +17,7 @@ const List = ({ friend }) => {
       ) : (
         <p>both are square</p>
       )}
-      <button className="button">Select</button>
+      <Button>Select</Button>
     </li>
   );
 };
