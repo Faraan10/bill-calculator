@@ -1,9 +1,14 @@
 import React from "react";
 import Button from "./Button";
 
-const List = ({ friend }) => {
+const List = ({ friend, selectedFriend, handleSelection }) => {
+  // console.log(selectedFriend, "selected");
+  // console.log(friend, "friend");
+
+  const isSelected = selectedFriend?.id === friend?.id;
+
   return (
-    <li>
+    <li className={isSelected ? "selected" : ""}>
       <img src={friend.image} alt={friend.name} />
       <h3>{friend.name}</h3>
       {friend.balance < 0 ? (
@@ -17,7 +22,9 @@ const List = ({ friend }) => {
       ) : (
         <p>both are square</p>
       )}
-      <Button>Select</Button>
+      <Button onClick={() => handleSelection(friend)}>
+        {isSelected ? "close" : "Select"}
+      </Button>
     </li>
   );
 };

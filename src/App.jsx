@@ -28,6 +28,7 @@ import { useState } from "react";
 const App = () => {
   const [friendsData, setFriendsData] = useState(initialFriends);
   const [showFriend, setShowFriend] = useState(false);
+  const [selectedFriend, setSelectedFriend] = useState(null);
 
   const handleClick = () => {
     setShowFriend((show) => !show); // getting the latest state which is
@@ -35,24 +36,41 @@ const App = () => {
   };
   // console.log(showFriend);
 
-  // below doing state uplifting from formAddFriend to add data to the
-  // firendsData useState
+  // below using state uplifting from formAddFriend using a callback
+  // function to add data to the firendsData useState
 
   const addFriendData = (newData) => {
     setFriendsData((prevData) => [...prevData, newData]);
     setShowFriend(false);
   };
+  // console.log(friendsData);
+
+  // another state uplifting for FriendsList, List component
+  // to store data in selectingFriend useState
+
+  const handleSelection = (friend) => {
+    // setSelectedFriend(friend);
+    setSelectedFriend((selected) =>
+      selected?.id === friend?.id ? null : friend
+    );
+    setShowFriend(false);
+  };
+  // console.log(selectedFriend);
 
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendsList friendsData={friendsData} />
+        <FriendsList
+          friendsData={friendsData}
+          selectedFriend={selectedFriend}
+          handleSelection={handleSelection}
+        />
         {showFriend && <FormAddFriend addFriendData={addFriendData} />}
         <Button onClick={handleClick}>
           {showFriend ? `Close` : `Add Friend`}
         </Button>
       </div>
-      <FormSplitBill />
+      {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} />}
     </div>
   );
 };
