@@ -23,14 +23,25 @@ import FriendsList from "./components/FriendsList";
 import FormAddFriend from "./components/FormAddFriend";
 import Button from "./components/Button";
 import FormSplitBill from "./components/FormSplitBill";
+import { useState } from "react";
 
 const App = () => {
+  const [showFriend, setShowFriend] = useState(false);
+
+  const handleClick = () => {
+    setShowFriend((show) => !show); // getting the latest state which is
+    // more accurate way than setShowFriend(!showFriend)
+  };
+  // console.log(showFriend);
+
   return (
     <div className="app">
       <div className="sidebar">
         <FriendsList initialFriends={initialFriends} />
-        <FormAddFriend />
-        <Button>Add friend</Button>
+        {showFriend && <FormAddFriend />}
+        <Button onClick={handleClick}>
+          {showFriend ? `Close` : `Add Friend`}
+        </Button>
       </div>
       <FormSplitBill />
     </div>
