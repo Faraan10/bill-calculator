@@ -26,6 +26,7 @@ import FormSplitBill from "./components/FormSplitBill";
 import { useState } from "react";
 
 const App = () => {
+  const [friendsData, setFriendsData] = useState(initialFriends);
   const [showFriend, setShowFriend] = useState(false);
 
   const handleClick = () => {
@@ -34,11 +35,19 @@ const App = () => {
   };
   // console.log(showFriend);
 
+  // below doing state uplifting from formAddFriend to add data to the
+  // firendsData useState
+
+  const addFriendData = (newData) => {
+    setFriendsData((prevData) => [...prevData, newData]);
+    setShowFriend(false);
+  };
+
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendsList initialFriends={initialFriends} />
-        {showFriend && <FormAddFriend />}
+        <FriendsList friendsData={friendsData} />
+        {showFriend && <FormAddFriend addFriendData={addFriendData} />}
         <Button onClick={handleClick}>
           {showFriend ? `Close` : `Add Friend`}
         </Button>
