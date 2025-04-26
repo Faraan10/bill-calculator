@@ -42,7 +42,6 @@ const App = () => {
     setFriendsData((prevData) => [...prevData, newData]);
     setShowFriend(false);
   };
-  // console.log(friendsData);
 
   // another state uplifting for FriendsList, List component
   // to store data in selectingFriend useState
