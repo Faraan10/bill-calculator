@@ -34,6 +34,7 @@ const App = () => {
     setShowFriend((show) => !show); // getting the latest state which is
     // more accurate way than setShowFriend(!showFriend)
   };
+  // console.log();
 
   // below using state uplifting from formAddFriend using a callback
   // function to add data to the firendsData useState
@@ -42,6 +43,7 @@ const App = () => {
     setFriendsData((prevData) => [...prevData, newData]);
     setShowFriend(false);
   };
+  // console.log(friendsData);
 
   // another state uplifting for FriendsList, List component
   // to store data in selectingFriend useState
