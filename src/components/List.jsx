@@ -2,9 +2,6 @@ import React from "react";
 import Button from "./Button";
 
 const List = ({ friend, selectedFriend, handleSelection }) => {
-  // console.log(selectedFriend, "selected");
-  // console.log(friend, "friend");
-
   const isSelected = selectedFriend?.id === friend?.id;
 
   return (
