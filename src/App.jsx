@@ -34,7 +34,6 @@ const App = () => {
     setShowFriend((show) => !show); // getting the latest state which is
     // more accurate way than setShowFriend(!showFriend)
   };
-  // console.log(showFriend);
 
   // below using state uplifting from formAddFriend using a callback
   // function to add data to the firendsData useState
